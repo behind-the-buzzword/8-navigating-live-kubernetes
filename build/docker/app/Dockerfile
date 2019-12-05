@@ -24,8 +24,8 @@ RUN apt-get update && \
     cron \
     unzip \
     procps && \
-    && pecl channel-update pecl.php.net && \
-    && pecl install apcu mcrypt-1.0.1 && \
+    pecl channel-update pecl.php.net && \
+    pecl install apcu mcrypt-1.0.1 && \
     docker-php-ext-install zip bz2 mbstring pdo pdo_mysql pcntl soap && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \

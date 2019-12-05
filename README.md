@@ -10,3 +10,6 @@ kubectl get nodes
 ```
 
 If this doesn't work shout @dblencowe
+
+## Setup
+If you want to run the local docker application you'll need to copy .env.example to .env, after that you should get away with `docker-compose up`

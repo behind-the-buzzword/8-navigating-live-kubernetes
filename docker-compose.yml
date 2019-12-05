@@ -7,14 +7,14 @@ services:
       args:
         BUILD_ENV: dev
     volumes:
-      - ./src:/usr/src
+      - ./:/var/www/html
 
   nginx:
     build:
       dockerfile: build/docker/nginx/Dockerfile
       context: .
     volumes:
-      - ./src/public:/usr/share/nginx/html
+      - ./public:/usr/share/nginx/html
     environment:
       BACKEND_SERVICE: app
       CACHE_ZONE: 'off'
@@ -26,10 +26,10 @@ services:
   database:
     image: mysql:5.7
     environment: 
-      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $DB_PASS
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER
-      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_PASSWORD: $DB_PASS
     volumes:
       - btbw_data:/var/lib/mysql
 

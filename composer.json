@@ -1,0 +1,19 @@
+{
+    "name": "btbw/kubernetes-demo",
+    "description": "A demo application for behind the buzzword",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dave Blencowe",
+            "email": "dblencowe@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "App\\": "app"
+        }
+    }
+}
