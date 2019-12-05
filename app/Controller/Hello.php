@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class Hello
+class Hello implements Controller
 {
     public function run()
     {

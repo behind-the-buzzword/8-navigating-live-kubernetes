@@ -7,26 +7,18 @@ ENV COMPOSER_MEMORY_LIMIT=-1
 ADD build/docker/app/www.conf /usr/local/etc/php-fpm.d/
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends software-properties-common && \
-    add-apt-repository ppa:jonathonf/ffmpeg-4 && \
-    apt-get install -y --no-install-recommends ffmpeg && \
-    add-apt-repository --remove ppa:jonathonf/ffmpeg-4 && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    imagemagick \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libpq-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
-    libpng-dev \
     libbz2-dev \
     libxml2-dev \
-    libglu1 \
     cron \
-    unzip \
-    procps && \
+    unzip && \
     pecl channel-update pecl.php.net && \
     pecl install apcu mcrypt-1.0.1 && \
-    docker-php-ext-install zip bz2 mbstring pdo pdo_mysql pcntl soap && \
+    docker-php-ext-install zip bz2 mbstring mysqli && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
     docker-php-ext-enable mcrypt && \
