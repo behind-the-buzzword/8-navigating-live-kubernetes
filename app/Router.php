@@ -6,8 +6,7 @@ class Router
 {
     public function load(array $request)
     {
-        $prefix = '\App\Controller\\';
-        $key = $prefix;
+        $key = '\App\Controller\\';
         array_map(function($item) use(&$key) {
             if (!empty($item)) {
                 $key .= ucfirst($item);
