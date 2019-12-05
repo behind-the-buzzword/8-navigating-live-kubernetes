@@ -1,35 +1,35 @@
 version: "3"
-  services:
-    app:
-      build:
-        context: .
-        dockerfile: build/docker/app/Dockerfile
+services:
+  app:
+    build:
+      context: .
+      dockerfile: build/docker/app/Dockerfile
     volumes:
       - ./src:/usr/src
 
-    nginx:
-      build:
-        dockerfile: build/docker/nginx/Dockerfile
-        context: .
-      volumes:
-        - ./src/public:/usr/share/nginx/html
-      environment:
-        BACKEND_SERVICE: app
-        CACHE_ZONE: 'off'
-      ports:
-        - 80:80
-      depends_on:
-        - app
+  nginx:
+    build:
+      dockerfile: build/docker/nginx/Dockerfile
+      context: .
+    volumes:
+      - ./src/public:/usr/share/nginx/html
+    environment:
+      BACKEND_SERVICE: app
+      CACHE_ZONE: 'off'
+    ports:
+      - 80:80
+    depends_on:
+      - app
       
-    database:
-      image: mysql:5.7
-      environment: 
-        MYSQL_ROOT_PASSWORD: $DB_PASSWORD
-        MYSQL_DATABASE: $DB_NAME
-        MYSQL_USER: $DB_USER
-        MYSQL_PASSWORD: $DB_PASSWORD
-      volumes:
-        btbw_data:/var/lib/mysql
+  database:
+    image: mysql:5.7
+    environment: 
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+    volumes:
+      - btbw_data:/var/lib/mysql
 
 volumes:
   btbw_data:
